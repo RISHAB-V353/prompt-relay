@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Prompt Relay - Multi-AI Composer",
+  "version": "0.3.1",
+  "description": "Compact glass-style prompt composer with selectable ChatGPT, Claude, and Gemini targets plus attachment relay.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "action": {
+    "default_title": "Open Prompt Relay"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "multi-ai-prompt-sender@local"
+    }
+  }
+}
